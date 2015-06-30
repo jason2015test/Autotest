@@ -43,10 +43,9 @@ public class InitConfig {
 		else
 			return value;
 	}
-
-	public static void main(String[] args){
-		InitConfig a = new InitConfig();
-		System.out.println(a.getConfig("Report_file"));
-	}
+//	public static void main(String[] args){
+//		InitConfig a = new InitConfig();
+//		System.out.println(a.getConfig("Data_dir"));
+//	}
 }
 

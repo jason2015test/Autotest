@@ -27,28 +27,20 @@ public class InitData{
 
 	public InitData(String packageInfo) {
 		try {
-			
-
 
 			InitConfig initConfig = new InitConfig();
 			String path = initConfig.getConfig("Data_dir");
 			String filePath = path.replaceAll("\\\\", "/");
-			
+						
 			InputStream inputStream = new FileInputStream(filePath);
-			
-			System.out.println(filePath);
-
-			
+					
 			book = Workbook.getWorkbook(inputStream);
-			//System.out.println(classname);
 			//È¡sheet
-			sheet = book.getSheet("bet");
+			sheet = book.getSheet(packageInfo);
 			rowNum = sheet.getRows();
 			Cell[] cell = sheet.getRow(0);
 			columnNum = cell.length;
 			columnnName = new String[cell.length];
-			
-			System.out.println(columnNum);
 
 			for (int i = 0; i < cell.length; i++) {
 				columnnName[i] = cell[i].getContents().toString();
@@ -98,6 +90,11 @@ public class InitData{
 	
 	public void remove() {
 		throw new UnsupportedOperationException("remove unsupported.");
+	}
+	
+	public static void main(String[] args){
+		InitData a = new InitData("bet");
+		System.out.println(a.next().get("²ÊÆ±ÖÖÀà"));
 	}
 	
 }

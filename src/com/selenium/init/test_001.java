@@ -10,12 +10,9 @@ public class test_001 {
 	public test_001(Map<String, String> testData) {
 		
 		this.dataMap = testData;
-		System.out.println("haha");
-
 	}
 	
 	public String test(){
-		System.out.println("hehe");
-		return dataMap.get("玩法类型");
+		return dataMap.get("玩法组");
 	}
 }

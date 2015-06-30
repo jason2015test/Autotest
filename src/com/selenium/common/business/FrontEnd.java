@@ -13,9 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.selenium.init.InitBrowser;
-import com.selenium.init.InitData;
-import com.selenium.init.OutputLog;
+import com.selenium.init.*;
 
 public class FrontEnd {
 	
@@ -32,8 +30,7 @@ public class FrontEnd {
 	}
 
 	public static void logIn(WebDriver driver){
-				
-		InitData initData = new InitData();
+
 		
 		WebElement username = driver.findElement(By.id("username"));		
 		username.click();

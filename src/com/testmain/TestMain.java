@@ -1,9 +1,6 @@
 package com.testmain;
 
-//import org.openqa.selenium.WebDriver;
-
 import com.selenium.init.*;
-//import com.selenium.testcase.bet.*;
 import com.selenium.testcase.bet.TestInfo;
 
 public class TestMain {
@@ -16,8 +13,6 @@ public class TestMain {
 
 		test_001 a = new test_001(initData.next());
 		System.out.println(a.test());
-
-	
     }
 	
 }
