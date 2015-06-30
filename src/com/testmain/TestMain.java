@@ -8,12 +8,12 @@ public class TestMain {
 	public static void main(String[] args) {
 		
 		TestInfo testInfo = new TestInfo();
-		System.out.println(testInfo.PackageInfo());
-		InitData initData = new InitData(testInfo.PackageInfo());	
-
+		InitData initData = new InitData(testInfo.PackageInfo());
+		
+		while(initData.hasNext()){
 		test_001 a = new test_001(initData.next());
 		System.out.println(a.test());
-    }
-	
+		}
+	}	
 }
 

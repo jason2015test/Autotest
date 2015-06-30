@@ -9,6 +9,7 @@
 package com.selenium.init;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,17 +25,40 @@ public class InitData{
 	private int      currentRowNo = 0;
 	private int      columnNum = 0;
 	private String[] columnnName;
+	private boolean  status1 = true;
+	private boolean  status2 = false;
 
 	public InitData(String packageInfo) {
 		try {
 
 			InitConfig initConfig = new InitConfig();
 			String path = initConfig.getConfig("Data_dir");
-			String filePath = path.replaceAll("\\\\", "/");
-						
-			InputStream inputStream = new FileInputStream(filePath);
+//			String filePath = path.replaceAll("\\\\", "/");
+			
+			InputStream inputStream = null;
+			try {
+				inputStream = new FileInputStream(path);
+			} catch(FileNotFoundException ex){
+				System.out.println(ex);
+				status1 = false;
+				return;
+			}
 					
 			book = Workbook.getWorkbook(inputStream);
+			
+			String sheetName[] = book.getSheetNames();
+			for(int i=0;i<sheetName.length;i++){
+				if(sheetName[i].equals(packageInfo))
+					{
+					this.status2 = true;
+					continue;
+					}
+			}
+			if (!status2)
+				{
+				System.out.println("找不到相应的sheet,初始化数据失败");
+				return;
+				}
 			//取sheet
 			sheet = book.getSheet(packageInfo);
 			rowNum = sheet.getRows();
@@ -53,7 +77,10 @@ public class InitData{
 	}
 	
 	public boolean hasNext() {
-
+		if ((!this.status1)&(!this.status2))
+		{
+			return false;
+		}
 		if (this.rowNum == 0 || this.currentRowNo >= this.rowNum) {
 
 			try {
@@ -71,6 +98,10 @@ public class InitData{
 		}
 
 	public Map<String, String> next() {
+		if ((!this.status1)&(!this.status2))
+		{
+			return null;
+			}
 
 		Cell[] c = sheet.getRow(this.currentRowNo);
 		Map<String, String> data = new HashMap<String, String>();
@@ -89,12 +120,10 @@ public class InitData{
 	}
 	
 	public void remove() {
+		if ((!this.status1)&(!this.status2))
+		{
+		return;
+		}
 		throw new UnsupportedOperationException("remove unsupported.");
 	}
-	
-	public static void main(String[] args){
-		InitData a = new InitData("bet");
-		System.out.println(a.next().get("彩票种类"));
-	}
-	
 }

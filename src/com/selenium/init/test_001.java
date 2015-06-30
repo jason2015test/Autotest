@@ -13,6 +13,6 @@ public class test_001 {
 	}
 	
 	public String test(){
-		return dataMap.get("Íæ·¨×é");
+		return dataMap.get("ºÅÂë");
 	}
 }
