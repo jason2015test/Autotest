@@ -16,7 +16,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class InitBrowser {
 	
 	public static WebDriver Init(){
-		
+			
 		InitConfig initConfig = new InitConfig();
 			
     	if(initConfig.getConfig("Browser").equals("ie")){
@@ -39,7 +39,7 @@ public class InitBrowser {
     		
     	}
     	
-    	else if(initConfig.getConfig("Browser").equals("firefox")){
+    	else if(initConfig.getConfig("Browser").equals("Firefox")){
     		  		
     		WebDriver driver = new FirefoxDriver();
     		
