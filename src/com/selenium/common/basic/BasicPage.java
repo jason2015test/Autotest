@@ -4,6 +4,6 @@
 
 package com.selenium.common.basic;
 
-public class Basic {
+public class BasicPage {
 
 }

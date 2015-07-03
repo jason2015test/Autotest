@@ -1,24 +1,28 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.*;
 
+import com.selenium.common.basic.DriverFactory;
 import com.selenium.init.*;
 
 public class test {
 
 	public static void main(String[] args){
-		WebDriver wd = InitBrowser.Init();
+		WebDriver wd = DriverFactory.getDriver();
+
 
 		InitData initData = new InitData("bet");
-		wd.get(initData.next().get("Url"));
-		String e = initData.getElement("ËÑË÷ÊäÈë¿ò").get("Value");
-		WebElement we = wd.findElement(By.id(e));
-		we.click();
-//		String k = initData.next().get("KeyWord");
-		we.sendKeys("selenium");
-//		String b = initData.getElement("ËÑË÷°´Å¥").get("Value");
-		WebElement we1 = wd.findElement(By.id("su"));
-		we1.click();
+		System.out.println(initData.next().get("Url"));
+//		String url = initData.next().get("Url");
+		String url = "http://www.baidu.com";
+		System.out.println(url);
+		wd.get(url);		
+//		wd.get(initData.next().get("Url"));
+//		String e = initData.getElement("ËÑË÷ÊäÈë¿ò").get("Value");
+//		WebElement we = wd.findElement(By.id(e));
+//		we.click();
+//		we.sendKeys("selenium");
+//		WebElement we1 = wd.findElement(By.id("su"));
+//		we1.click();
 	}	
 }
