@@ -11,6 +11,7 @@ package com.selenium.common.basic;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -40,7 +41,8 @@ public class BasePage {
 	
 	public WebElement findElement(WebDriver driver, String objectName) {
 			
-			WebElement e;
+		WebElement e = null;
+		try{
 			switch (initData.getElement(objectName).get("Type")) {
 			case "xpath":
 				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
@@ -69,6 +71,9 @@ public class BasePage {
 			default:
 				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
 			}
+		}catch (NoSuchElementException x){
+			System.out.println(x);
+		}
 			return e;
 		}
 	
