@@ -2,7 +2,7 @@
 类名：InitConfig
 功能:读取配置文件，返回数据文件、报告文件以及日志文件的路径
 参数: 
-返回值: 通过get调用返回具体的配置
+返回值: 通过getConfig调用返回具体的配置
 历史记录: [2015-06-25]Black-创建初始版本
 '*******************************************************************************************************************/
 
@@ -43,9 +43,6 @@ public class InitConfig {
 		else
 			return value;
 	}
-//	public static void main(String[] args){
-//		InitConfig a = new InitConfig();
-//		System.out.println(a.getConfig("Data_dir"));
-//	}
+
 }
 

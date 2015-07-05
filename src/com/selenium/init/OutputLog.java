@@ -10,7 +10,7 @@
 * @param log       要写入文件的字符串
 * @param filePath      文件路径的字符串表示形式，目录的层次分隔可以是“/”也可以是“\\”
 * @param isAppend      true：追加到文件的末尾；false：以覆盖原文件的方式写入
-*/ 
+**/ 
 
 package com.selenium.init;
 

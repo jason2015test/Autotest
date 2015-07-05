@@ -19,7 +19,7 @@ public class FrontEnd {
 	
 	public static void Enter(WebDriver driver){
 		
-		InitBrowser.Init();
+
 		
 		driver.get("www.baidu.com");
 			
