@@ -1,28 +1,29 @@
 package tests;
 
+//import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.*;
 
+import com.selenium.common.basic.BasePage;
 import com.selenium.common.basic.DriverFactory;
 import com.selenium.init.*;
 
 public class test {
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		WebDriver wd = DriverFactory.getDriver();
-
-
 		InitData initData = new InitData("bet");
-		System.out.println(initData.next().get("Url"));
-//		String url = initData.next().get("Url");
-		String url = "http://www.baidu.com";
-		System.out.println(url);
-		wd.get(url);		
-//		wd.get(initData.next().get("Url"));
-//		String e = initData.getElement("ËÑË÷ÊäÈë¿ò").get("Value");
-//		WebElement we = wd.findElement(By.id(e));
-//		we.click();
-//		we.sendKeys("selenium");
-//		WebElement we1 = wd.findElement(By.id("su"));
-//		we1.click();
-	}	
+		Map<String, String> map = new HashMap<String, String>();
+		map = initData.next();
+		BasePage bp = new BasePage(wd);
+
+		wd.get(map.get("Url"));
+		
+		bp.click("µÇÂ¼°´Å¥");
+		bp.sendkey("ÓÃ»§ÃûÊäÈë¿ò",map.get("UserName"));
+		bp.sendkey("ÃÜÂëÊäÈë¿ò", map.get("PassWord"));
+		bp.click("µÇÂ¼");
+	}
 }

@@ -14,24 +14,27 @@ import com.selenium.init.InitData;
 
 public class BasePage {
 	
-	protected WebDriver driver;
-//	protected Map<String, String> map;
-//	protected String objectName;
+	private WebDriver driver;
+	private InitData initData;
 	
-	protected InitData initData;
-	
-	protected BasePage(WebDriver driver) throws IOException {
+	public BasePage(WebDriver driver) throws IOException {
 		this.driver = driver;
 		initData = new InitData("bet");
 	}
 	
-	protected void sendkey(String name, String values){
-		WebElement e = findElement(driver, name);
-		e.sendKeys(values);
+	public void sendkey (String name, String values){
+		findElement(this.driver,name).sendKeys(values);
 	}
 	
-	public WebElement findElement(WebDriver driver, String objectName)
-			throws IOException {
+	public void click(String name) throws Exception {
+		findElement(this.driver,name).click();
+	}
+	
+	public WebElement getElement(String name) throws IOException {
+		return findElement(this.driver, name);
+	}
+	
+	public WebElement findElement(WebDriver driver, String objectName) {
 			
 			WebElement e;
 			switch (initData.getElement(objectName).get("Type")) {
@@ -39,25 +42,25 @@ public class BasePage {
 				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
 				break;
 			case "id":
-				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
+				e = driver.findElement(By.id(initData.getElement(objectName).get("Value")));
 				break;
 			case "name":
-				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
+				e = driver.findElement(By.name(initData.getElement(objectName).get("Value")));
 				break;
 			case "cssSelector":
-				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
+				e = driver.findElement(By.cssSelector(initData.getElement(objectName).get("Value")));
 				break;
 			case "className":
-				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
+				e = driver.findElement(By.className(initData.getElement(objectName).get("Value")));
 				break;
 			case "tagName":
-				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
+				e = driver.findElement(By.tagName(initData.getElement(objectName).get("Value")));
 				break;
 			case "linkText":
-				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
+				e = driver.findElement(By.linkText(initData.getElement(objectName).get("Value")));
 				break;
 			case "partialLinkText":
-				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
+				e = driver.findElement(By.partialLinkText(initData.getElement(objectName).get("Value")));
 				break;
 			default:
 				e = driver.findElement(By.xpath(initData.getElement(objectName).get("Value")));
