@@ -26,9 +26,13 @@ public class test {
 		wd.get(map.get("Url"));
 		
 		bp.click("登录按钮");
+		
+		Thread.sleep(10);
 //		wd.implicitly_wait(10);
 		bp.sendkey("用户名输入框",map.get("UserName"));
+		Thread.sleep(5);
 		bp.sendkey("密码输入框", map.get("PassWord"));
 		bp.click("登录");
+		
 	}
 }
